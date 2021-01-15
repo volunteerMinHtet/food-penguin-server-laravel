@@ -10,6 +10,6 @@ class CategoryRoute
 {
     static function routes()
     {
-        Route::get('/categories', [CategoryController::class, 'index']);
+        Route::resource('/categories', CategoryController::class);
     }
 }

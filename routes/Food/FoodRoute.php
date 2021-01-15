@@ -10,6 +10,6 @@ class FoodRoute
 {
     static function routes()
     {
-        Route::get('/foods', [FoodController::class, 'index']);
+        Route::resource('/foods', FoodController::class);
     }
 }

@@ -16,7 +16,7 @@ class FoodController extends Controller
     {
         $foods = Food::all();
 
-        return response($foods, 200);
+        return $foods;
     }
 
     /**
@@ -27,7 +27,13 @@ class FoodController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $food = new Food;
+        $food->name = $request->name;
+        $food->category_id = $request->category_id;
+        $food->price = $request->price;
+        $food->save();
+
+        return response()->json($food, 201);
     }
 
     /**
