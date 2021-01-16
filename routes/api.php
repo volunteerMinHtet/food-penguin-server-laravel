@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use Routes\Register\RegisterRoute;
 use Routes\Food\FoodRoute;
 use Routes\Category\CategoryRoute;
 
@@ -17,9 +18,9 @@ use Routes\Category\CategoryRoute;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+RegisterRoute::routes();
 
-FoodRoute::routes();
-CategoryRoute::routes();
+Route::middleware('auth:api')->group(function () {
+    FoodRoute::routes();
+    CategoryRoute::routes();
+});
